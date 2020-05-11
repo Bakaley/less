@@ -8,10 +8,11 @@ public class Students {
             newStudentList[i] = studentsSurnames[i];
         }
         newStudentList[studentsSurnames.length] = newStudent;
-        // пересоздание 3-мерного массива с сохранением оценок
+        // пересоздание 3-мерного массива с сохранением оценок, но с новым студентом
+
     }
 
-    static void rate (String studentSurname, String discipline, String rating){
+    static void rate (String studentSurname, String discipline, String newRating){
         /*
         найти студента из списка studentsSurnames, вернуть индекс
         найти дисциплину из списка disciplines, вернуть индекс
