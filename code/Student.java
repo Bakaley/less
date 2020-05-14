@@ -25,9 +25,22 @@ public class Student {
     public static void main(String[] args) {
         HashMap <Integer, Student> group = new HashMap<>();
 
-        group.put(Collections.min(group.keySet()) + 1, new Student("Иван", "Иванов"));
-        group.put(Collections.min(group.keySet()) + 1, new Student("Петр", "Петров"));
-        group.put(Collections.min(group.keySet()) + 1, new Student("Сергей", "Сергеев"));
+       addStudent(group, "Петр", "Петров");
+       addStudent(group, "Иван", "Иванов");
+       addStudent(group, "Сергей", "Сергеев");
+
+        System.out.println(group.containsKey(2));
+    }
+
+    public static void addStudent (HashMap <Integer, Student> group, String name, String surname){
+
+        if(group.size()==0){
+            group.put(1, new Student(name, surname));
+        }
+        else {
+            group.put(Collections.min(group.keySet()) + 1, new Student(name, surname));
+        }
+
     }
 
 
