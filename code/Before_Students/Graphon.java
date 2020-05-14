@@ -1,3 +1,5 @@
+package Before_Students;
+
 import java.util.Scanner;
 
 public class Graphon {
