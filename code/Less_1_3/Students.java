@@ -1,6 +1,4 @@
-package Before_Students;
-
-import java.util.Arrays;
+package Less_1_3;
 
 public class Students {
 

@@ -1,4 +1,4 @@
-package Before_Students;
+package Less_1_3;
 
 import java.util.Scanner;
 

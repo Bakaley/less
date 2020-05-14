@@ -29,6 +29,7 @@ public class Student {
        addStudent(group, "Петр", "Петров");
        addStudent(group, "Иван", "Иванов");
        addStudent(group, "Сергей", "Сергеев");
+       addStudent(group, "Андрей", "Андреев");
 
         System.out.println(group.containsKey(2));
     }
