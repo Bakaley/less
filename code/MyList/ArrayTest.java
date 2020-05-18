@@ -1,4 +1,4 @@
-package Students;
+package MyList;
 
 import java.util.concurrent.ThreadLocalRandom;
 
