@@ -1,4 +1,4 @@
-package Zoo;
+package Less_1_6.Zoo;
 
 public class Wild extends Animal {
 

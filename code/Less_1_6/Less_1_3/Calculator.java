@@ -1,4 +1,4 @@
-package Less_1_3;
+package Less_1_6.Less_1_3;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package MyList;
+package Less_1_6.MyList;
 
 public class MyArrayList {
 
