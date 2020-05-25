@@ -169,4 +169,9 @@ public class MyCollection {
             return true;
         }
     }
+
+    public boolean remove (int index){
+        if(remove(get(index))) return  true;
+        return false;
+    }
 }
