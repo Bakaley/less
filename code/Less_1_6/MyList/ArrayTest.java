@@ -26,7 +26,7 @@ public class ArrayTest {
         myArrayList.add (new int[]{0, 1, 2});
         System.out.println(myArrayList);
 
-        System.out.println("Добавляем MyArrayList {3, 4, 5} и печатаем: ");
+        System.out.println("Добавляем MyArray {3, 4, 5} и печатаем: ");
         myArrayList.add(new MyArrayList(new int[]{3, 4, 5}));
         System.out.println(myArrayList);
 
