@@ -9,33 +9,23 @@ public class MyArrayList {
     }
 
     MyArrayList (int[] arrayToCreate){
-        if(arrayToCreate.length!=0) this.array = arrayToCreate;
+        this.array = arrayToCreate;
     }
 
     public void add (int numberToAdd) {
-        if(array.length==0){
-            array = new int[1];
-            array[0] = numberToAdd;
+        int[] newArray = new int[array.length+1];
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[i];
         }
-        else {
-            int[] newArray = new int[array.length+1];
-            for (int i = 0; i < array.length; i++) {
-                newArray[i] = array[i];
-            }
-            newArray[newArray.length-1] = numberToAdd;
-            array = newArray;
-        }
+        newArray[newArray.length-1] = numberToAdd;
+        array = newArray;
+
     }
 
     public int getIndex (int numToFind) {
-        if(array.length==0) {
-            return -1;
-        }
-        else {
             for (int i = 0; i < array.length; i++) {
                 if(array[i] == numToFind)  return i;
             }
-        }
         return -1;
     }
 
@@ -44,26 +34,15 @@ public class MyArrayList {
     }
 
     public boolean contains (int numToFind) {
-        if(array.length==0) {
-            return false;
-        }
-        else {
+
             for (int i = 0; i < array.length; i++) {
                 if(array[i] == numToFind)  return true;
             }
-        }
         return false;
     }
 
     public void add(int[] arrayToAdd){
 
-        if(arrayToAdd.length==0) return;
-
-        else if(array.length==0){
-            array = arrayToAdd;
-        }
-
-        else {
             int[] newArray = new int[array.length + arrayToAdd.length];
 
             for (int i = 0; i < array.length; i++) {
@@ -73,20 +52,11 @@ public class MyArrayList {
             for (int i = 0; i < arrayToAdd.length; i++) {
                 newArray[i+array.length] = arrayToAdd[i];
             }
-
             array = newArray;
-        }
     }
 
     public void add(MyArrayList arrayToAdd){
 
-        if(arrayToAdd.array.length==0) return;
-
-        else if(array.length==0){
-            array = arrayToAdd.array;
-        }
-
-        else {
             int[] newArray = new int[array.length + arrayToAdd.array.length];
 
             for (int i = 0; i < array.length; i++) {
@@ -96,9 +66,7 @@ public class MyArrayList {
             for (int i = 0; i < arrayToAdd.array.length; i++) {
                 newArray[i+array.length] = arrayToAdd.array[i];
             }
-
             array = newArray;
-        }
     }
 
     public int getSize (){

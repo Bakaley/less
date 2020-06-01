@@ -1,9 +1,9 @@
-package MyArray;
+package CollectionImplement;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-public class MyArrayList implements Collection {
+public class MyCollectionImplement implements Collection {
 
     private Object[] array = new Object[0];
 
