@@ -151,4 +151,5 @@ public class MyCollectionImplement implements Collection {
         }
         return string.toString();
     }
+
 }
