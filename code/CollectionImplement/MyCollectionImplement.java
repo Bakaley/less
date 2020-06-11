@@ -117,13 +117,13 @@ public class MyCollectionImplement implements Collection {
 
             for (int i = 0; i < array.length; i++) {
 
-            for (int j = 0; j <c.toArray().length; j++) {
+                for (int j = 0; j <c.toArray().length; j++) {
 
-                if(array[i].equals(c.toArray()[j])) {
-                    newCollection.add(array[i]);
-                    break;
+                    if(array[i].equals(c.toArray()[j])) {
+                        newCollection.add(array[i]);
+                        break;
+                    }
                 }
-            }
         }
         array = newCollection.array.clone();
         return true;
