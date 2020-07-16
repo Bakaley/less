@@ -32,6 +32,12 @@ public class BinaryTreeTest {
             System.out.println(node);
         }
 
+        System.out.println("Добавляем и удаляем 185");
+        myCollection.add(185);
+        System.out.println(myCollection);
+        myCollection.remove(185);
+        System.out.println(myCollection);
+
         System.out.println("Взаимодействия с ArrayList (в квадратных скобках):");
         ArrayList<Object> collectionToRetain = new ArrayList<>();
 

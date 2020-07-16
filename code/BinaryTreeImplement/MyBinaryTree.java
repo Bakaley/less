@@ -116,7 +116,50 @@ public class MyBinaryTree implements Set {
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException();
+        deleteNode(root, (Integer)o);
+        return true;
+    }
+
+    private Node deleteNode(Node root, Integer data) {
+
+        if(root == null) return root;
+
+        if(data < root.data) {
+            root.left = deleteNode(root.left, data);
+        } else if(data > root.data) {
+            root.right = (deleteNode(root.right, data));
+        } else {
+            // node with no leaf nodes
+            if(root.left == null && root.right == null) {
+                System.out.println("deleting "+data);
+                return null;
+            } else if(root.left == null) {
+                // node with one node (no left node)
+                System.out.println("deleting "+data);
+                return root.right;
+            } else if(root.right == null) {
+                // node with one node (no right node)
+                System.out.println("deleting "+data);
+                return root.left;
+            } else {
+                // nodes with two nodes
+                // search for min number in right sub tree
+                Integer minValue = minValue(root.right);
+                root.data = (minValue);
+                root.right = (deleteNode(root.right, minValue));
+                System.out.println("deleting "+data);
+            }
+        }
+
+        return root;
+    }
+
+    private Integer minValue(Node node) {
+
+        if(node.left != null) {
+            return minValue(node.left);
+        }
+        return node.data;
     }
 
     @Override
