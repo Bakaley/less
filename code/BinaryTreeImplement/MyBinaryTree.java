@@ -1,9 +1,6 @@
 package BinaryTreeImplement;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 public class MyBinaryTree implements Set {
 
@@ -68,7 +65,15 @@ public class MyBinaryTree implements Set {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        //на столько нерационально, на сколько это физически возможно
+        Object[] objects = new Object[getNodeSize(root)];
+      Iterator iterator = iterator();
+      int index = 0;
+      while (iterator.hasNext()){
+          objects[index] = iterator.next();
+          index++;
+      }
+      return objects;
     }
 
     @Override
@@ -129,25 +134,16 @@ public class MyBinaryTree implements Set {
         } else if(data > root.data) {
             root.right = (deleteNode(root.right, data));
         } else {
-            // node with no leaf nodes
             if(root.left == null && root.right == null) {
-                System.out.println("deleting "+data);
                 return null;
             } else if(root.left == null) {
-                // node with one node (no left node)
-                System.out.println("deleting "+data);
                 return root.right;
             } else if(root.right == null) {
-                // node with one node (no right node)
-                System.out.println("deleting "+data);
                 return root.left;
             } else {
-                // nodes with two nodes
-                // search for min number in right sub tree
                 Integer minValue = minValue(root.right);
                 root.data = (minValue);
                 root.right = (deleteNode(root.right, minValue));
-                System.out.println("deleting "+data);
             }
         }
 
@@ -180,12 +176,33 @@ public class MyBinaryTree implements Set {
 
     @Override
     public boolean removeAll(Collection c) {
-        throw new UnsupportedOperationException();
+        for (Object o :
+                c.toArray()) {
+            remove(o);
+        }
+        return true;
     }
 
     @Override
     public boolean retainAll(Collection c) {
-        throw new UnsupportedOperationException();
+//
+//        if(root == null || c.toArray().length ==0) return false;
+//
+//        MyBinaryTree newCollection = new MyBinaryTree();
+//
+//        for (int i = 0; i < array.length; i++) {
+//
+//            for (int j = 0; j <c.toArray().length; j++) {
+//
+//                if(array[i].equals(c.toArray()[j])) {
+//                    newCollection.add(array[i]);
+//                    break;
+//                }
+//            }
+//        }
+//        array = newCollection.array.clone();
+        return true;
+
     }
 
     @Override
@@ -204,6 +221,8 @@ public class MyBinaryTree implements Set {
         else
             return convertNodeToString(node.left) + " " +node.data + " " +convertNodeToString(node.right);
     }
+
+
 
     private class Node{
         int data;
