@@ -38,11 +38,8 @@ public class BinaryTreeTest {
         myCollection.remove(185);
         System.out.println(myCollection);
 
-
-
         System.out.println("Взаимодействия с ArrayList (в квадратных скобках):");
         ArrayList<Object> collectionToRetain = new ArrayList<>();
-
 
         collectionToRetain.add(250);
         collectionToRetain.add(185);
@@ -51,6 +48,18 @@ public class BinaryTreeTest {
         System.out.println("Удалить все элементы коллекции " + collectionToRetain + " из коллекции " + myCollection);
         myCollection.removeAll(collectionToRetain);
         System.out.println(myCollection);
+
+        myCollection.clear();
+        collectionToRetain.clear();
+        for (int i = 0; i < 10; i++) {
+            collectionToRetain.add(ThreadLocalRandom.current().nextInt(-5, 5));
+            myCollection.add(ThreadLocalRandom.current().nextInt(-5, 5));
+        }
+
+        System.out.println("Удаляем общие элементы коллекций " + myCollection + " и " + collectionToRetain + " из первой:");
+        myCollection.removeAll(collectionToRetain);
+        System.out.println(myCollection);
+
 
         for (int i = 0; i < 5; i++) {
             collectionToRetain.add(ThreadLocalRandom.current().nextInt(-10, 10));

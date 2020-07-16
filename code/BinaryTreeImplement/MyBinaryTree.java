@@ -185,22 +185,23 @@ public class MyBinaryTree implements Set {
 
     @Override
     public boolean retainAll(Collection c) {
-//
-//        if(root == null || c.toArray().length ==0) return false;
-//
-//        MyBinaryTree newCollection = new MyBinaryTree();
-//
-//        for (int i = 0; i < array.length; i++) {
-//
-//            for (int j = 0; j <c.toArray().length; j++) {
-//
-//                if(array[i].equals(c.toArray()[j])) {
-//                    newCollection.add(array[i]);
-//                    break;
-//                }
-//            }
-//        }
-//        array = newCollection.array.clone();
+
+        if(root == null || c.toArray().length ==0) return false;
+
+        MyBinaryTree newCollection = new MyBinaryTree();
+        Object[] objects = toArray();
+
+        for (int i = 0; i < objects.length; i++) {
+
+            for (int j = 0; j <c.toArray().length; j++) {
+
+                if(objects[i].equals(c.toArray()[j])) {
+                    newCollection.add(objects[i]);
+                    break;
+                }
+            }
+        }
+        root = newCollection.root;
         return true;
 
     }
