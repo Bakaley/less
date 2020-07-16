@@ -6,17 +6,20 @@ public class MyBinaryTree implements Set {
 
     private Node root;
 
-    private int getNodeSize (Node node){
-        if (node == null)
-            return 0;
-        else
-            return(getNodeSize(node.left) + 1 + getNodeSize(node.right));
-    }
-
 
     @Override
     public int size() {
-        return getNodeSize(root);
+        if(root == null) return 0;
+       return NodeSize(root);
+    }
+
+    private int NodeSize (Node node) {
+        {
+            if (node == null)
+                return 0;
+            else
+                return(NodeSize(node.left) + 1 + NodeSize(node.right));
+        }
     }
 
     @Override
@@ -66,7 +69,7 @@ public class MyBinaryTree implements Set {
     @Override
     public Object[] toArray() {
         //на столько нерационально, на сколько это физически возможно
-        Object[] objects = new Object[getNodeSize(root)];
+        Object[] objects = new Object[NodeSize(root)];
       Iterator iterator = iterator();
       int index = 0;
       while (iterator.hasNext()){
@@ -91,6 +94,15 @@ public class MyBinaryTree implements Set {
         }
         else {
             append(data, root);
+        }
+        return false;
+    }
+
+    public boolean add(Object[] os) {
+
+        for (Object o :
+                os) {
+            add(o);
         }
         return false;
     }
@@ -125,37 +137,48 @@ public class MyBinaryTree implements Set {
         return true;
     }
 
-    private Node deleteNode(Node root, Integer data) {
+    private Node deleteNode(Node node, Integer data) {
 
-        if(root == null) return root;
-
-        if(data < root.data) {
-            root.left = deleteNode(root.left, data);
-        } else if(data > root.data) {
-            root.right = (deleteNode(root.right, data));
+        if(node == null) return node;
+        if(size() == 1 && root.data == data){
+            root = null;
+            return root;
+        }
+        if(data < node.data) {
+            node.left = deleteNode(node.left, data);
+        } else if(data > node.data) {
+            node.right = deleteNode(node.right, data);
         } else {
-            if(root.left == null && root.right == null) {
-                return null;
-            } else if(root.left == null) {
-                return root.right;
-            } else if(root.right == null) {
-                return root.left;
-            } else {
-                Integer minValue = minValue(root.right);
-                root.data = (minValue);
-                root.right = (deleteNode(root.right, minValue));
+            if (node.left == null) {
+                if (node == root){
+                    root = node.right;
+                    return null;
+                }
+                return node.right;
             }
+            else if (node.right == null) {
+                if (node == root){
+                    root = node.left;
+                    return null;
+                }
+                return node.left;
+            }
+            node.data = minValue(node.right);
+            node.right = deleteNode(node.right, node.data);
         }
 
-        return root;
+        return node;
     }
 
-    private Integer minValue(Node node) {
-
-        if(node.left != null) {
-            return minValue(node.left);
+    private int minValue(Node root)
+    {
+        int minv = root.data;
+        while (root.left != null)
+        {
+            minv = root.left.data;
+            root = root.left;
         }
-        return node.data;
+        return minv;
     }
 
     @Override
