@@ -2,8 +2,9 @@ package CollectionImplement;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Set;
 
-public class MyCollectionImplement implements Collection {
+public class MyCollectionImplement implements Collection, Set {
 
     private Object[] array = new Object[0];
 
