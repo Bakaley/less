@@ -55,8 +55,13 @@ public class MyListExceptionTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
+    public void set1() {
+        collection.set(245, 5);
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
     public void subList() {
-        collection.subList(245, 5);
+        collection.subList(-4, 5);
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
