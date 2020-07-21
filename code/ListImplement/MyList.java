@@ -1,9 +1,6 @@
 package ListImplement;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyList implements List {
 
@@ -90,7 +87,7 @@ public class MyList implements List {
 
     @Override
     public boolean addAll(Collection c) {
-
+        if(c == null) throw new NullPointerException();
         Object[] newArray = new Object[array.length + c.toArray().length];
         for (int i = 0; i < array.length; i++) {
             newArray[i] = array[i];
@@ -105,6 +102,7 @@ public class MyList implements List {
 
     @Override
     public boolean addAll(int index, Collection c) {
+        if(c == null) throw new NullPointerException();
         if(index >= 0 && index < array.length) {
             Object[] newArray = new Object[array.length + c.toArray().length];
             for (int i = 0; i < index; i++) {
@@ -126,6 +124,7 @@ public class MyList implements List {
 
     @Override
     public boolean removeAll(Collection c) {
+        if(c == null) throw new NullPointerException();
         for (Object object : c.toArray()) {
             this.remove(object);
         }
@@ -134,15 +133,11 @@ public class MyList implements List {
 
     @Override
     public boolean retainAll(Collection c){
-
+        if(c == null) throw new NullPointerException();
         if(array.length == 0 || c.toArray().length ==0) return false;
-
         MyList newCollection = new MyList();
-
         for (int i = 0; i < array.length; i++) {
-
             for (int j = 0; j <c.toArray().length; j++) {
-
                 if(array[i].equals(c.toArray()[j])) {
                     newCollection.add(array[i]);
                     break;
@@ -185,16 +180,10 @@ public class MyList implements List {
             for (int i = 0; i < array.length - index; i++) {
                 newArray[i+index+1] = array[i+index];
             }
-
             array = newArray;
         } else {
             throw new IndexOutOfBoundsException();
         }
-    }
-
-    @Override
-    public Object remove(int index) {
-        return null;
     }
 
     @Override
@@ -206,8 +195,19 @@ public class MyList implements List {
     }
 
     @Override
+    public Object remove(int index) {
+        remove(get(index));
+        return null;
+    }
+
+    @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        int index = -1;
+        for (Object obj :
+                array) {
+            if(obj.equals(o)) index = indexOf(obj);
+        }
+        return index;
     }
 
     @Override
@@ -222,6 +222,12 @@ public class MyList implements List {
 
     @Override
     public List subList(int fromIndex, int toIndex) {
+        if(fromIndex < 0 || toIndex < 0 || toIndex < fromIndex) throw new IndexOutOfBoundsException();
+        MyList newList = new MyList();
+        Object[] newArray = Arrays.copyOfRange(array, fromIndex, toIndex);
+        for (Object o : newArray) {
+            newList.add(o);
+        }
         return null;
     }
 
