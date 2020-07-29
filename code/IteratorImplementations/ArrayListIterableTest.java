@@ -8,6 +8,7 @@ public class ArrayListIterableTest {
 
         ArrayListIterable myCollection = new ArrayListIterable();
 
+
         System.out.println("Закидываем 5 чисел в массив и печатаем:");
         for (int i = 0; i < 5; i++) {
             myCollection.add(ThreadLocalRandom.current().nextInt(-10, 10));
